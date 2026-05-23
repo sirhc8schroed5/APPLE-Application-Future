@@ -1,0 +1,57 @@
+{
+  "name": "hermschrod-box",
+  "version": "1.0.0",
+  "description": "Quantum-Blockchain Neuropsychological Assessment Engine – 100% Offline, Apple Metal GPU",
+  "main": "electron/main.js",
+  "scripts": {
+    "start": "cd server && node index.js",
+    "ingest": "cd server && node ingest.js",
+    "electron": "electron .",
+    "dist": "electron-builder",
+    "dist:mac": "electron-builder --mac"
+  },
+  "author": "HermSchrod Box Team",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.21.0",
+    "cors": "^2.8.5",
+    "body-parser": "^1.20.3",
+    "axios": "^1.7.7",
+    "better-sqlite3": "^11.1.2",
+    "xlsx": "^0.18.5"
+  },
+  "devDependencies": {
+    "electron": "^33.2.0",
+    "electron-builder": "^24.13.3"
+  },
+  "build": {
+    "appId": "com.hermschrod.neuropsych-dashboard",
+    "productName": "HermSchrod Box",
+    "mac": {
+      "category": "public.app-category.healthcare-fitness",
+      "target": ["dmg", "pkg"],
+      "identity": "Developer ID Application: YOUR NAME (TEAMID)",
+      "hardenedRuntime": true,
+      "gatekeeperAssess": false,
+      "entitlements": "entitlements.mac.plist",
+      "entitlementsInherit": "entitlements.mac.plist"
+    },
+    "files": [
+      "index.html",
+      "styles.css",
+      "app.js",
+      "data.js",
+      "server/**",
+      "electron/**",
+      "entitlements.mac.plist",
+      "Apple_Review_Notes.md"
+    ],
+    "extraResources": [
+      {
+        "from": "resources/",
+        "to": "resources",
+        "filter": ["**/*"]
+      }
+    ]
+  }
+}

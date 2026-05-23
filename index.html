@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>HermSchrod Box – Neuropsych Dashboard</title>
+  <meta name="description" content="Quantum-Blockchain Neuropsychological Assessment Engine powered by local AI inference." />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <!-- ============ HERO ============ -->
+  <header class="hero">
+    <div class="hero-badge">⚡ OFFLINE · HIPAA · METAL GPU</div>
+    <h1>HermSchrod Box</h1>
+    <p>Quantum-Blockchain Neuropsychological Assessment Engine</p>
+  </header>
+
+  <!-- ============ MAIN GRID ============ -->
+  <main class="container">
+
+    <!-- ---- INTAKE ---- -->
+    <section class="card intake" id="intakeCard">
+      <h2><span class="icon">📋</span> Patient Intake</h2>
+      <form id="intakeForm">
+        <label>
+          Patient Initials
+          <input type="text" id="initials" placeholder="e.g. J.D." required />
+        </label>
+        <label>
+          Age
+          <input type="number" id="age" min="0" max="120" placeholder="e.g. 42" required />
+        </label>
+        <label>
+          Sex
+          <select id="sex" required>
+            <option value="">Select</option>
+            <option>M</option>
+            <option>F</option>
+            <option>Other</option>
+          </select>
+        </label>
+        <label>
+          Referral Domain
+          <select id="refDomain" required>
+            <option value="">Select</option>
+            <option>ADHD</option>
+            <option>Dementia</option>
+            <option>TBI</option>
+            <option>Learning Disability</option>
+            <option>Autism</option>
+            <option>Mood Disorder</option>
+            <option>Stroke/Vascular</option>
+            <option>Motor Dysfunction</option>
+            <option>Executive Dysfunction</option>
+            <option>Memory Impairment</option>
+          </select>
+        </label>
+      </form>
+    </section>
+
+    <!-- ---- CLINICAL NOTES ---- -->
+    <section class="card notes" id="notesCard">
+      <h2><span class="icon">🧠</span> Clinical Notes</h2>
+      <textarea id="notes" rows="10" placeholder="Paste or type detailed clinician observations here…&#10;&#10;Example: Patient presents with difficulty recalling recent events, impaired executive functioning, and noticeable word-finding difficulties. Motor coordination appears within normal limits. Mood is depressed with flattened affect."></textarea>
+    </section>
+
+    <!-- ---- MULTIMODAL CONTROLS ---- -->
+    <section class="card multimodal" id="multimodalCard">
+      <h2><span class="icon">🎙️👁️</span> Multimodal Biomarkers</h2>
+      <div class="biomarker-row">
+        <button id="speechBtn" class="btn-secondary">
+          <span class="btn-icon">🎙️</span> Capture Speech Fingerprint
+        </button>
+        <button id="visionBtn" class="btn-secondary">
+          <span class="btn-icon">👁️</span> Capture Vision Heatmap
+        </button>
+      </div>
+      <div id="biomarkerStatus" class="status-line">No biomarkers captured yet.</div>
+    </section>
+
+    <!-- ---- LAUNCH BUTTON ---- -->
+    <section class="card launch-section">
+      <button id="generateBtn" class="cta cta-ferocious">
+        🔥 UNLEASH THE BEAST – Generate Full Report 🔥
+      </button>
+      <div id="spinner" class="spinner" hidden>
+        <div class="spinner-ring"></div>
+        <span>The beast is working…</span>
+      </div>
+    </section>
+
+    <!-- ============ RESULTS ============ -->
+    <section class="card results" id="results" hidden>
+
+      <!-- Detected Domains -->
+      <div class="result-block">
+        <h3><span class="icon">🎯</span> Detected Domains</h3>
+        <div id="detectedDomains"></div>
+      </div>
+
+      <!-- Recommended Tests -->
+      <div class="result-block">
+        <h3><span class="icon">📋</span> Recommended Tests</h3>
+        <ul id="recommendedTests"></ul>
+      </div>
+
+      <!-- Quantum Predictions -->
+      <div class="result-block quantum-block">
+        <h3><span class="icon">🔮</span> Quantum Predictive States</h3>
+        <div id="quantumPredictions"></div>
+      </div>
+
+      <!-- Speech Biomarker -->
+      <div class="result-block">
+        <h3><span class="icon">🎙️</span> Speech Biomarker</h3>
+        <div id="speechResult"></div>
+      </div>
+
+      <!-- Vision Biomarker -->
+      <div class="result-block">
+        <h3><span class="icon">👁️</span> Vision Biomarker</h3>
+        <div id="visionResult"></div>
+      </div>
+
+      <!-- Blockchain -->
+      <div class="result-block blockchain-block">
+        <h3><span class="icon">🔗</span> Blockchain Audit Ledger</h3>
+        <div id="blockchainStatus"></div>
+      </div>
+
+      <!-- Full Report -->
+      <div class="result-block report-block">
+        <h3><span class="icon">📄</span> Comprehensive Neuropsychological Report</h3>
+        <pre id="fullReport" class="output"></pre>
+      </div>
+
+    </section>
+
+  </main>
+
+  <footer class="footer">
+    <p>HermSchrod Box v1.0 · 100% Offline · Zero-Knowledge Blockchain · Apple Metal GPU</p>
+  </footer>
+
+  <script src="data.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
