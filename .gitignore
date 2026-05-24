@@ -2,6 +2,28 @@ node_modules/
 *.db
 *.db-journal
 *.db-wal
+*.db-shm
 .DS_Store
 dist/
 *.log
+
+# Large academic files and client data
+*.pdf
+*.doc
+*.docx
+*.xlsx
+*.m4a
+Integrated_Assets/
+tokenizer.json
+
+# C++ Build artifacts and temp dirs
+PlagiarismApp*
+server/PlagiarismApp*
+server/compiler_depend.make
+server/LIBRARY*
+server/app.js
+server/app/
+server/Three*
+server/Three Gen Paper*
+server/Hum*
+server/Psycho*

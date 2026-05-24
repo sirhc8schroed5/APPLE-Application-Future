@@ -1,0 +1,18 @@
+{
+  "terminal.integrated.profiles.windows": {
+    "Custom Init": {
+      "path": "pwsh.exe",
+      "args": [
+        "-noexit",
+        "-file",
+        "${env:APPDATA}\\PowerShell\\custom-init.ps1"
+      ]
+    }
+  },
+  "terminal.integrated.defaultProfile.windows": "Custom Init",
+  "python.testing.pytestArgs": [
+    "electron"
+  ],
+  "python.testing.unittestEnabled": false,
+  "python.testing.pytestEnabled": true
+}

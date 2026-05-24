@@ -5,7 +5,7 @@
 
 import fs from 'fs';
 import path from 'path';
-import * as xlsx from 'xlsx';
+import xlsx from 'xlsx';
 import Database from 'better-sqlite3';
 
 const DB_PATH = path.join(process.cwd(), 'neuropsych_analytics.db');
@@ -45,9 +45,8 @@ function ingestExcel(filename, sourceName) {
   console.log(`\n📥 Loading massive dataset: ${filename}`);
   console.time(`Ingested ${filename}`);
   
-  // Read Excel file
   const workbook = xlsx.readFile(filePath);
-  const sheetName = workbook.SheetNames[0];
+  const sheetName = workbook.SheetNames.includes('RAW TABLE') ? 'RAW TABLE' : workbook.SheetNames[0];
   const worksheet = workbook.Sheets[sheetName];
   
   // Convert to JSON array

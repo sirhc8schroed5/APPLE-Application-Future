@@ -79,4 +79,9 @@ const TESTS = [
   { name: "Woodcock-Johnson IV Tests of Cognitive Abilities", acronym: "WJ-IV Cog", domains: ["Cognitive / Neurological", "Executive Functioning"], ageRange: "2+", link: "https://www.hmhco.com", description: "Comprehensive cognitive abilities battery." }
 ];
 
-window.TESTS = TESTS;
+if (typeof module !== 'undefined' && module.exports) {
+  module.exports = { TESTS };
+}
+if (typeof window !== 'undefined') {
+  window.TESTS = TESTS;
+}

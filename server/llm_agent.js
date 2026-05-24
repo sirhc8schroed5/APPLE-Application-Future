@@ -57,9 +57,15 @@ You must analyze the patient's data strictly across these domains:
 - MULTIMODAL BIOMARKERS (Speech/Vision): \${JSON.stringify(biomarkerData, null, 2)}
 - PATIENT INTAKE: \${JSON.stringify(patientData, null, 2)}
 
+### FUTURE-FORWARD PREDICTIVE IMPERATIVE:
+"AI is data, and Data can only look backwards. Creativity looks forwards."
+You are not just a summarizer of past data. You must possess FUTURE-FORWARD PREDICTIVE ABILITY.
+After analyzing the domains, you must creatively project the patient's future clinical trajectory. You must outline specific, forward-looking interventions, adaptive strategies, and neuroplasticity-based treatments. Project the future outlook based on creative, predictive clinical intuition rather than simply reciting past norms.
+
 ### INSTRUCTIONS:
 Generate a ferociously detailed, master-level clinical neuropsychological report. 
 Do not hallucinate tests not listed above. Cross-reference the Quantum and Biomarker data against Luria's frameworks to detect neurodivergent heat signatures.
+Conclude your report with a dedicated "FUTURE-FORWARD PROJECTIONS" section that explicitly applies the creative, predictive imperative outlined above.
 Write in a highly professional, clinical tone suitable for a medical record.
   `.trim();
 }

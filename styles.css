@@ -2,22 +2,22 @@
 
 :root {
   --font: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-  --bg: #0a0a14;
-  --bg-grad: linear-gradient(160deg, #0a0a14 0%, #111128 40%, #0d1b2a 100%);
-  --card-bg: rgba(255, 255, 255, 0.04);
-  --card-border: rgba(255, 255, 255, 0.08);
-  --card-blur: 16px;
-  --primary: #4fd1c5;
-  --primary-glow: rgba(79, 209, 197, 0.25);
-  --accent: #ff6b6b;
-  --accent-glow: rgba(255, 107, 107, 0.3);
-  --quantum: #a78bfa;
-  --quantum-glow: rgba(167, 139, 250, 0.3);
-  --blockchain: #fbbf24;
-  --text: #e8e8f0;
-  --text-dim: #8888aa;
-  --shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
-  --radius: 16px;
+  --bg: #05050c;
+  --bg-grad: linear-gradient(160deg, #05050c 0%, #150d05 50%, #140505 100%);
+  --card-bg: rgba(255, 255, 255, 0.03);
+  --card-border: rgba(255, 255, 255, 0.05);
+  --card-blur: 20px;
+  --primary: #fbbf24;       /* Golden Lion Amber */
+  --primary-glow: rgba(251, 191, 36, 0.2);
+  --accent: #ef4444;        /* Volcanic Crimson */
+  --accent-glow: rgba(239, 68, 68, 0.35);
+  --quantum: #f97316;       /* Radiant Orange */
+  --quantum-glow: rgba(249, 115, 22, 0.25);
+  --blockchain: #f59e0b;    /* Gold */
+  --text: #f3f4f6;
+  --text-dim: #9ca3af;
+  --shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+  --radius: 20px;
 }
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -35,11 +35,33 @@ body {
 /* ============ HERO ============ */
 .hero {
   text-align: center;
-  padding: 3rem 1.5rem 2.5rem;
-  background: linear-gradient(135deg, #1a1a3e 0%, #2d1b4e 50%, #1a2a3e 100%);
+  padding: 4rem 1.5rem 3.5rem;
+  background: linear-gradient(135deg, #150d05 0%, #200a0a 50%, #0d0614 100%);
   border-bottom: 1px solid var(--card-border);
   position: relative;
   overflow: hidden;
+}
+
+.hero-logo-container {
+  margin-bottom: 1.5rem;
+  display: flex;
+  justify-content: center;
+  position: relative;
+  z-index: 2;
+}
+
+.hero-logo {
+  width: 130px;
+  height: 130px;
+  border-radius: 50%;
+  border: 2px solid rgba(251, 191, 36, 0.4);
+  filter: drop-shadow(0 0 15px rgba(251, 191, 36, 0.6));
+  animation: logoPulse 4s ease-in-out infinite alternate;
+}
+
+@keyframes logoPulse {
+  0% { transform: scale(1); filter: drop-shadow(0 0 12px rgba(251, 191, 36, 0.5)); }
+  100% { transform: scale(1.06); filter: drop-shadow(0 0 30px rgba(239, 68, 68, 0.9)); }
 }
 
 .hero::before {
@@ -258,6 +280,15 @@ textarea {
 .cta-ferocious:hover {
   transform: translateY(-3px) scale(1.02);
   box-shadow: 0 8px 40px var(--accent-glow);
+  animation: roarShake 0.3s ease-in-out infinite;
+}
+
+@keyframes roarShake {
+  0% { transform: translateY(-3px) scale(1.02) rotate(0deg); }
+  25% { transform: translateY(-3px) scale(1.02) rotate(-0.6deg); }
+  50% { transform: translateY(-3px) scale(1.02) rotate(0deg); }
+  75% { transform: translateY(-3px) scale(1.02) rotate(0.6deg); }
+  100% { transform: translateY(-3px) scale(1.02) rotate(0deg); }
 }
 
 .cta-ferocious:active {

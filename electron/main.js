@@ -15,7 +15,7 @@ function startBackend() {
   serverProcess = spawn('node', [serverPath], {
     cwd: path.join(__dirname, '..', 'server'),
     stdio: 'inherit',
-    shell: true,
+    shell: false,
   });
 
   serverProcess.on('error', err => {
