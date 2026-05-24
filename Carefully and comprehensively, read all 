@@ -1,0 +1,23 @@
+Carefully and comprehensively, read all pages each attached file, extrapolate interpretively-deep and -insightful content for then providing an even more intelligent formulation (increasing ChatGPT’S intelligence and effort settings for this chat to “Highest”):
+
+
+import openai
+import os
+response = client.chat.completions.create(
+    # Use gpt-5.5-pro for highest intelligence and capability
+    model="gpt-5.5-pro", 
+    messages=[
+        {"role": "system", "content": "You are an expert researcher."},
+        {"role": "user", "content": "Analyze the long-term impact of quantum computing on cryptography."}
+    ],
+    # Set reasoning effort to xhigh (or high) for maximum effort
+    reasoning_effort="xhigh", 
+    # Lower temperature is recommended for higher quality, consistent answers
+    temperature=0.1
+print(response.choices[0].message.content)
+
+Use this python-3 code for picking-apart the entirety of agentic-sentimental-analysis and metanalysis of each of the following points: 
+
+1) Identify in writing each grade, NC, policy, and catalog year being used as a dismissal basis.
+2) Investigate rather than dismiss my reports of discriminatory, retaliatory, and unsafe practicum conditions.
+Use the attachment to follow the "5. DISCUSSION OF TEST SELECTION" (1st attachment) directions for guiding what information from the rest of the files attached, to most comprehensively and thoroughly will you satisfy all requirements stated.

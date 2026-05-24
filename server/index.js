@@ -18,6 +18,7 @@ import { analyzeSpeech } from './speech.js';
 import { analyzeVision } from './vision.js';
 import { buildFerociousSystemPrompt } from './llm_agent.js';
 import Database from 'better-sqlite3';
+import { PlagiarismEngine } from './plagiarism_engine.js';
 
 // === Database Initialization ===
 const DB_PATH = path.join(process.cwd(), 'neuropsych_analytics.db');
@@ -30,6 +31,41 @@ if (fs.existsSync(DB_PATH)) {
   console.log('🔗 Blockchain ledger verified and intact.');
 } else {
   console.log("⚠️ neuropsych_analytics.db not found. Run ingest.js first to populate the predictive engine.");
+}
+
+// === Plagiarism & Similarity Engine Setup ===
+const plagiarismEngine = new PlagiarismEngine();
+
+// Load a default clinical synonym dictionary
+const defaultSynonyms = `
+focus,attention,concentration,vigilance,alertness,ATTN
+depressed,sad,hopeless,dysphoric,anhedonia,low mood,melancholic,DEPR
+anxious,worry,fear,panic,apprehension,nervous,tense,ANX
+trauma,abuse,ptsd,neglect,flashback,intrusive,TRAUM
+memory,forget,recall,cognitive decline,confabulation,MEM
+`;
+plagiarismEngine.loadSynonymDictionary(defaultSynonyms);
+
+// Auto-index standard reference materials on startup
+const resourcesDir = path.join(process.cwd(), 'resources');
+if (fs.existsSync(resourcesDir)) {
+  try {
+    const files = fs.readdirSync(resourcesDir);
+    let indexCount = 0;
+    files.forEach(file => {
+      if (file.endsWith('.txt') || file.endsWith('.md')) {
+        const filePath = path.join(resourcesDir, file);
+        const content = fs.readFileSync(filePath, 'utf-8');
+        plagiarismEngine.addFile(file, filePath, content);
+        indexCount++;
+      }
+    });
+    // Run boilerplate extraction
+    plagiarismEngine.detectBoilerplate();
+    console.log(`📚 Documentation Database: Indexed ${indexCount} reference manuals.`);
+  } catch (err) {
+    console.error('⚠️ Failed to auto-index clinical manuals:', err);
+  }
 }
 
 // === Express Setup ===
@@ -260,6 +296,46 @@ app.get('/api/blockchain/verify', (req, res) => {
   const intact = verifyChain(db);
   const count = db.prepare('SELECT COUNT(*) as c FROM blockchain_ledger').get().c;
   res.json({ intact, total_blocks: count });
+});
+
+// ==========================================
+// 8. PLAGIARISM & SIMILARITY ENGINE (Stage 1-5 Integration)
+// ==========================================
+app.get('/api/plagiarism/status', (req, res) => {
+  res.json({
+    synonym_count: plagiarismEngine.synonymCount(),
+    indexed_files_count: plagiarismEngine.indexedFiles_.length,
+    boilerplate_count: plagiarismEngine.boilerplate_.size,
+    indexed_files: plagiarismEngine.indexedFiles_
+  });
+});
+
+app.post('/api/plagiarism/scan', (req, res) => {
+  const { text, filename, radius } = req.body;
+  if (!text) {
+    return res.status(400).json({ error: 'Text content is required.' });
+  }
+  const report = plagiarismEngine.scan(text, filename || 'query.txt', radius || 0.8);
+  
+  // Immutably log scan to blockchain
+  if (db) {
+    mineBlock(db, {
+      type: "Plagiarism_Scan",
+      filename: filename || 'query.txt',
+      match_percentage: report.matchPercentage
+    });
+  }
+
+  res.json(report);
+});
+
+app.post('/api/plagiarism/rank', (req, res) => {
+  const { text, filename, radius, topK } = req.body;
+  if (!text) {
+    return res.status(400).json({ error: 'Text content is required.' });
+  }
+  const rankings = plagiarismEngine.rankSources(text, filename || 'query.txt', radius || 0.8, topK || 5);
+  res.json({ rankings });
 });
 
 // ==========================================

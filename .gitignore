@@ -27,3 +27,19 @@ server/Three*
 server/Three Gen Paper*
 server/Hum*
 server/Psycho*
+
+# Binary packages & executables
+*.pkg
+*.bin
+*.dll
+*.exe
+*.zip
+*.tar.gz
+*.webloc
+*.class
+*.so
+*.dylib
+*.a
+*.make
+moc_*.cpp
+CMakeConfigureLog.yaml
