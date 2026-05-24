@@ -5,21 +5,21 @@
 			"type": "shell",
 			"command": "if command -v npm > /dev/null; then npm run build; else echo '\\n\\n🚨 ACTION REQUIRED: Node.js is not installed! 🚨\\n\\nmacOS is blocking automatic terminal installation. You MUST manually install Node.js to proceed.\\n\\n1. Go to https://nodejs.org\\n2. Download and install the macOS Installer.\\n3. Completely restart VS Code.\\n\\n'; exit 1; fi",
 			"options": {
-				"cwd": "${workspaceFolder}/Dashboard/server"
+				"cwd": "${workspaceFolder}/server"
 			},
 			"group": "build",
 			"problemMatcher": ["$tsc"],
-			"label": "npm: build - Dashboard/server",
+			"label": "npm: build - server",
 			"detail": "tsc (with fallback check)"
 		},
 		{
 			"type": "shell",
-			"command": "if command -v npm > /dev/null; then cd Dashboard/server && npm install && npx tsc -p tsconfig.json; else echo '\\n\\n🚨 ACTION REQUIRED: Node.js is not installed! 🚨\\n\\nmacOS is blocking automatic terminal installation. You MUST manually install Node.js to proceed.\\n\\n1. Go to https://nodejs.org\\n2. Download and install the macOS Installer.\\n3. Completely restart VS Code.\\n\\n'; exit 1; fi",
+			"command": "if command -v npm > /dev/null; then cd server && npm install && npx tsc -p tsconfig.json; else echo '\\n\\n🚨 ACTION REQUIRED: Node.js is not installed! 🚨\\n\\nmacOS is blocking automatic terminal installation. You MUST manually install Node.js to proceed.\\n\\n1. Go to https://nodejs.org\\n2. Download and install the macOS Installer.\\n3. Completely restart VS Code.\\n\\n'; exit 1; fi",
 			"problemMatcher": [
 				"$tsc"
 			],
 			"group": "build",
-			"label": "tsc: build - Dashboard/server/tsconfig.json"
+			"label": "tsc: build - server/tsconfig.json"
 		}
 	]
 }
